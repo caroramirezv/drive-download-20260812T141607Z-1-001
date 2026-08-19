@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +23,7 @@
     </style>
 </head>
 <body>
+    <h1>Esta es una pagina muy Lol</h1>
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -60,7 +61,7 @@
     <a href="#" class="btn btn-primary">Click aqui para conocerlo</a>
   </div>
 </div>
-
+    
 <div class="container">
 <form>
     <div class="mb-3">
@@ -95,59 +96,65 @@
 </form>
 </div>
 
-<div id="PrecioDolar">   
-    Precio Dolar
-</div>
     <script>
         console.log("Hola ;v")
         fetch('https://cl.dolarapi.com/v1/cotizaciones/usd')
         .then(response=>response.json())
         .then(datos=>{
+            document.getElementById("PrecioDolar").innerHTML=datos.ultimoCierre;
+            document.getElementById("valorCompra").innerHTML=datos.compra;
+            document.getElementById("valorVenta").innerHTML=datos.venta;
+            document.getElementById("fechaActualizacion").innerHTML=datos.fechaActualizacion;
+            const fechaISO = datos.fechaActualizacion; 
+            const fechaObjeto = new Date(fechaISO); 
+            const fechaFormateada = fechaObjeto.toLocaleDateString('es-CL');
+            document.getElementById("fechaActualizacion").innerHTML = fechaFormateada;
+            document.getElementById("nombreMoneda").innerHTML=datos.nombre;
+            document.getElementById("tipoMoneda").innerHTML=datos.moneda;
             console.log(datos);
         })
-
-        document.getElementById("PrecioDolar")
-
     </script>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#Nro Columna</th>
+      <th scope="col">Informacion</th>
+      <th scope="col">Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr>
+      <th scope="row">1</th>
+      <td>Moneda</td>
+      <td><span id="tipoMoneda"></span></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Nombre</td>
+      <td><span id="nombreMoneda"></span></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Compra</td>
+      <td><span id="valorCompra"></span></td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Venta</td>
+      <td><span id="valorVenta"></span></td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Fecha de Actualizacion</td>
+      <td><span id="fechaActualizacion"></span></td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Ultimo Cierre</td>
+      <td><span id="PrecioDolar"></span></td>
+    </tr>
+  </tbody>
+</table>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <style>
-        p{
-            color: blueviolet;
-        }
-        body{
-           background-image: url(img/homero.jpg);
-           background-repeat: no-repeat;
-           background-size:cover;
-        }
-        .cero{
-            color: beige;
-        }
-    </style>
-</head>
-<body>
-    <h3 style="color: rgb(24, 24, 161);">Esta es una pagina Dewr</h3>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwWvMYlr7OroRaGoDz-wxLJtbHHx_KblFps5i6J2lWWw&s=10" alt="DABo" width="600" height="300">
-    <br>
-    <a href="servicios.html">Lista de Servicios</a>
-    <ul>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="productos.html">Productos</a></li>
-        <li><a href="gta6.html">Bonus</a></li>
-    </ul>
-    <p class=".cero">Este es un parrafo <br>
-    Hola</p>
-    <p>Este es otro parrafo
-        <br>
-        Sos
-    </p>
-</body>
->>>>>>> 869ed586cc26e62d8f83f038cd15d5c445a27d13
 </html>
