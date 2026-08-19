@@ -4,3 +4,6 @@
 h3{
     border: 40;
 }
+.card-back{
+            background-image: url(../img/card.jpg);
+        }
